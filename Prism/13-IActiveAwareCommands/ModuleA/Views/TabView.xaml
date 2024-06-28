@@ -1,0 +1,22 @@
+﻿<UserControl
+    x:Class="ModuleA.Views.TabView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock
+            Margin="5"
+            FontSize="18"
+            Text="{Binding Title}" />
+        <CheckBox
+            Margin="5"
+            Content="Can Execute"
+            IsChecked="{Binding CanUpdate}" />
+        <Button
+            Margin="5"
+            Command="{Binding UpdateCommand}"
+            Content="Save" />
+        <TextBlock Margin="5" Text="{Binding UpdateText}" />
+    </StackPanel>
+</UserControl>

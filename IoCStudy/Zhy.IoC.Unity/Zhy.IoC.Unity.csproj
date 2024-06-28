@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath>D:\admin\Downloads\program\IoCStudy\Zhy.IoC.Main\bin</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zhy.IoC.Core\Zhy.IoC.Core.csproj" />
+    <ProjectReference Include="..\Zhy.IoC.Unity.Packages\Zhy.IoC.Unity.Packages.csproj" />
+  </ItemGroup>
+
+</Project>

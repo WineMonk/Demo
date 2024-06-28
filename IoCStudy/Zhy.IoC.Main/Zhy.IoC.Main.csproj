@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zhy.IoC.AOP\Zhy.IoC.AOP.csproj" />
+    <ProjectReference Include="..\Zhy.IoC.Autofac.Packages\Zhy.IoC.Autofac.Packages.csproj" />
+    <ProjectReference Include="..\Zhy.IoC.Autofac\Zhy.IoC.Autofac.csproj" />
+    <ProjectReference Include="..\Zhy.IoC.Core\Zhy.IoC.Core.csproj" />
+    <ProjectReference Include="..\Zhy.IoC.Unity.Packages\Zhy.IoC.Unity.Packages.csproj" />
+    <ProjectReference Include="..\Zhy.IoC.Unity\Zhy.IoC.Unity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DI-Autofac.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DI-Autofac.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DI-Unity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

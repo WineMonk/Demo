@@ -1,0 +1,47 @@
+{
+  "components": [
+    {
+      "type": "Zhy.IoC.Autofac.LenovoComputer,Zhy.IoC.Autofac",
+      "services": [
+        {
+          "type": "Zhy.IoC.Core.IComputer,Zhy.IoC.Core"
+        }
+      ],
+      "autoActivate": true,
+      "instanceScope": "singleinstance"
+    },
+    {
+      "type": "Zhy.IoC.Autofac.TogarKeyboard,Zhy.IoC.Autofac",
+      "services": [
+        {
+          "type": "Zhy.IoC.Core.IKeyboard,Zhy.IoC.Core"
+        }
+      ],
+      "autoActivate": true,
+      "instanceScope": "singleinstance"
+    },
+    {
+      "type": "Zhy.IoC.Autofac.LogitechMouse,Zhy.IoC.Autofac",
+      "services": [
+        {
+          "type": "Zhy.IoC.Core.IMouse,Zhy.IoC.Core"
+        }
+      ],
+      "parameters": {
+        "places": 4
+      },
+      "autoActivate": true,
+      "instanceScope": "singleinstance"
+    },
+    {
+      "type": "Zhy.IoC.Autofac.Programmer,Zhy.IoC.Autofac",
+      "services": [
+        {
+          "type": "Zhy.IoC.Core.IPerson,Zhy.IoC.Core"
+        }
+      ],
+      "autoActivate": true,
+      "instanceScope": "singleinstance"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>$(PrismTargetFramework)</TargetFramework>
+    <AssemblyName>Regions</AssemblyName>
+    <UseWPF>true</UseWPF>
+    <StartupObject>Regions.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.Unity" />
+  </ItemGroup>
+</Project>

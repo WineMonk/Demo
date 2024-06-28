@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<autofac>
+	<components name="0">
+		<type>Zhy.IoC.Autofac.LenovoComputer,Zhy.IoC.Autofac</type>
+		<services name="0" type="Zhy.IoC.Core.IComputer,Zhy.IoC.Core" />
+	</components>
+	<components name="1">
+		<type>Zhy.IoC.Autofac.TogarKeyboard,Zhy.IoC.Autofac</type>
+		<services name="0" type="Zhy.IoC.Core.IKeyboard,Zhy.IoC.Core" />
+	</components>
+	<components name="2">
+		<type>Zhy.IoC.Autofac.LogitechMouse,Zhy.IoC.Autofac</type>
+		<services name="0" type="Zhy.IoC.Core.IMouse,Zhy.IoC.Core" />
+	</components>
+	<components name="3">
+		<type>Zhy.IoC.Autofac.Programmer,Zhy.IoC.Autofac</type>
+		<services name="0" type="Zhy.IoC.Core.IPerson,Zhy.IoC.Core" />
+	</components>
+</autofac>
