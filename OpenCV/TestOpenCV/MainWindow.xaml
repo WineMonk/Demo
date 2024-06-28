@@ -1,0 +1,31 @@
+﻿<Window
+    x:Class="TestOpenCV.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TestOpenCV"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <WrapPanel>
+            <Button
+                x:Name="btnOpenImage"
+                Margin="3"
+                Click="btnOpenImage_Click"
+                Content="打开图片" />
+            <Button
+                x:Name="btnOpenVideo"
+                Margin="3"
+                Click="btnOpenVideo_Click"
+                Content="打开视频" />
+            <Button
+                x:Name="btnCameraFaceRecognition"
+                Margin="3"
+                Click="btnCameraFaceRecognition_Click"
+                Content="人脸识别" />
+        </WrapPanel>
+    </Grid>
+</Window>
