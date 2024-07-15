@@ -13,10 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="res\attachment.pdf">
+    <None Update="res\c1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\audio.mp3">
+    <None Update="res\c2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="res\c3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="res\background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="res\image.png">
