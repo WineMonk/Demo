@@ -142,5 +142,43 @@ namespace MinioTest.utils
                 ConsoleUtil.Info($"删除存储桶 {bucketName} 对象 {objectName} 失败 - {e.Message}");
             }
         }
+
+        private static async Task ResumableUpload(MinioClient minioClient, string bucketName, string objectName, string filePath)
+        {
+            using (var fileStream = new FileStream(filePath, FileMode.Open))
+            {
+                long partSize = 5 * 1024 * 1024; // 5 MB 分片大小
+                long fileSize = fileStream.Length;
+                int partCount = (int)Math.Ceiling((double)fileSize / partSize);
+                var uploadId = await minioClient.NewMultipartUploadAsync(bucketName, objectName);
+                try
+                {
+                    var parts = new List<Part>();
+
+                    for (int i = 0; i < partCount; i++)
+                    {
+                        long offset = i * partSize;
+                        long size = Math.Min(partSize, fileSize - offset);
+                        fileStream.Seek(offset, SeekOrigin.Begin);
+
+                        var buffer = new byte[size];
+                        await fileStream.ReadAsync(buffer, 0, (int)size);
+
+                        using (var partStream = new MemoryStream(buffer))
+                        {
+                            var part = await minioClient.PutObjectAsync(bucketName, objectName, partStream, partStream.Length, null, null, null, uploadId, i + 1);
+                            parts.Add(new Part { PartNumber = part.PartNumber, ETag = part.ETag });
+                        }
+                    }
+
+                    await minioClient.CompleteMultipartUploadAsync(bucketName, objectName, uploadId, parts);
+                }
+                catch (Exception)
+                {
+                    await minioClient.RemoveIncompleteUploadAsync(bucketName, objectName);
+                    throw;
+                }
+            }
+        }
     }
 }

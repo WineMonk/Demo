@@ -1,0 +1,76 @@
+﻿<Window
+    x:Class="ToJ.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ToJ"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Code Type">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton
+                    Command="{Binding SelectCodeTypeCommand}"
+                    CommandParameter="C#"
+                    Content="C#"
+                    IsChecked="True" />
+                <RadioButton
+                    Command="{Binding SelectCodeTypeCommand}"
+                    CommandParameter="Java"
+                    Content="Java" />
+                <RadioButton
+                    Command="{Binding SelectCodeTypeCommand}"
+                    CommandParameter="Python"
+                    Content="Python" />
+            </StackPanel>
+        </GroupBox>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Code">
+                <TextBox
+                    AcceptsReturn="True"
+                    Text="{Binding CodeText}"
+                    TextWrapping="Wrap" />
+            </GroupBox>
+            <StackPanel
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <Button
+                    Margin="5,10"
+                    Padding="8,2"
+                    Background="#ffffff"
+                    Command="{Binding ToJsonCommand}"
+                    Content="&gt;&gt;&gt;"
+                    Cursor="Hand" />
+                <Button
+                    Margin="5,10"
+                    Padding="8,2"
+                    Background="#ffffff"
+                    Command="{Binding ToCodeCommand}"
+                    Content="&lt;&lt;&lt;"
+                    Cursor="Hand" />
+            </StackPanel>
+            <GroupBox Grid.Column="2" Header="Json">
+                <TextBox
+                    AcceptsReturn="True"
+                    Text="{Binding JsonText}"
+                    TextWrapping="Wrap" />
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

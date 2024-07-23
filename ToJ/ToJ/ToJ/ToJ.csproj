@@ -4,24 +4,13 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
-	<UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="resources\file%4032.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="Minio" Version="6.0.3" />
-    <PackageReference Include="Minio-YA" Version="3.1.14" />
-    <PackageReference Include="Minio.AspNetCore" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="resources\file@32.png" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.10.0" />
   </ItemGroup>
 
 </Project>
