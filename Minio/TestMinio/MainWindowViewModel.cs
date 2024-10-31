@@ -26,7 +26,7 @@ namespace MinioTest
         private async Task Upload()
         {
             IMinioClient minioClient = MinioUtil.GetMinioClient();
-            await MinioUtil.UploadFile(minioClient, "test-szc", UploadFilePath);
+            await MinioUtil.UploadFile(minioClient, "self-files", UploadFilePath);
             await RefreshFileListView();
         }
 
@@ -47,7 +47,7 @@ namespace MinioTest
         private async Task RefreshFileListView()
         {
             IMinioClient minioClient = MinioUtil.GetMinioClient();
-            List<FileItem> fileItems = await MinioUtil.GetFileItems(minioClient, "test-szc");
+            List<FileItem> fileItems = await MinioUtil.GetFileItems(minioClient, "self-files");
             Files = new ObservableCollection<FileItem>(fileItems);
         }
 
@@ -67,7 +67,7 @@ namespace MinioTest
                 return;
             }
             IMinioClient minioClient = MinioUtil.GetMinioClient();
-            await MinioUtil.DownloadFile(minioClient, "test-szc", File.FileName, dialog.SelectedPath);
+            await MinioUtil.DownloadFile(minioClient, "self-files", File.FileName, dialog.SelectedPath);
         }
 
         [RelayCommand]
@@ -78,7 +78,7 @@ namespace MinioTest
                 return;
             }
             IMinioClient minioClient = MinioUtil.GetMinioClient();
-            await MinioUtil.RemoveFile(minioClient, "test-szc", File.FileName);
+            await MinioUtil.RemoveFile(minioClient, "self-files", File.FileName);
             await RefreshFileListView();
         }
 

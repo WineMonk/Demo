@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <NoWarn>CA1416</NoWarn>
+  </PropertyGroup>
+	<ItemGroup>
+    <Reference Include="ArcGIS.Core">
+      <HintPath>D:\software\GeoScene\Pro\bin\ArcGIS.Core.dll</HintPath>
+      <CopyLocal>True</CopyLocal>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ArcGIS.CoreHost">
+      <HintPath>D:\software\GeoScene\Pro\bin\ArcGIS.CoreHost.dll</HintPath>
+      <CopyLocal>True</CopyLocal>
+      <Private>True</Private>
+    </Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="ExtractGdbStruct.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="gdb_list.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+ </Project>

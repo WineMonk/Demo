@@ -1,4 +1,5 @@
 ﻿using Minio;
+using Minio.ApiEndpoints;
 using Minio.DataModel;
 using Minio.DataModel.Args;
 using Minio.DataModel.Encryption;
@@ -22,10 +23,15 @@ namespace MinioTest.utils
         public static IMinioClient GetMinioClient()
         {
             return _minio ??= _minio = new MinioClient()
-                .WithCredentials("Bv8yTk82H3P3pzi50y4M",
-                    "0NaZjrsasWq9c51EfjB4Cyeg0KicGFPOB0UUVGfA")
-                .WithEndpoint("127.0.0.1:9005")
+                .WithCredentials("xUz59ICZMg5mdbmvfz2C",
+                    "WHQGp0kF7BIMzdzIRzqIb9cv1UxnLZWWqs6qPnUF")
+                .WithEndpoint("81.70.35.77:9000")
                 .Build();
+            //return _minio ??= _minio = new MinioClient()
+            //    .WithCredentials("Bv8yTk82H3P3pzi50y4M",
+            //        "0NaZjrsasWq9c51EfjB4Cyeg0KicGFPOB0UUVGfA")
+            //    .WithEndpoint("127.0.0.1:9005")
+            //    .Build();
         }
 
         public static async Task UploadFile(IMinioClient minio,
@@ -143,42 +149,5 @@ namespace MinioTest.utils
             }
         }
 
-        private static async Task ResumableUpload(MinioClient minioClient, string bucketName, string objectName, string filePath)
-        {
-            using (var fileStream = new FileStream(filePath, FileMode.Open))
-            {
-                long partSize = 5 * 1024 * 1024; // 5 MB 分片大小
-                long fileSize = fileStream.Length;
-                int partCount = (int)Math.Ceiling((double)fileSize / partSize);
-                var uploadId = await minioClient.NewMultipartUploadAsync(bucketName, objectName);
-                try
-                {
-                    var parts = new List<Part>();
-
-                    for (int i = 0; i < partCount; i++)
-                    {
-                        long offset = i * partSize;
-                        long size = Math.Min(partSize, fileSize - offset);
-                        fileStream.Seek(offset, SeekOrigin.Begin);
-
-                        var buffer = new byte[size];
-                        await fileStream.ReadAsync(buffer, 0, (int)size);
-
-                        using (var partStream = new MemoryStream(buffer))
-                        {
-                            var part = await minioClient.PutObjectAsync(bucketName, objectName, partStream, partStream.Length, null, null, null, uploadId, i + 1);
-                            parts.Add(new Part { PartNumber = part.PartNumber, ETag = part.ETag });
-                        }
-                    }
-
-                    await minioClient.CompleteMultipartUploadAsync(bucketName, objectName, uploadId, parts);
-                }
-                catch (Exception)
-                {
-                    await minioClient.RemoveIncompleteUploadAsync(bucketName, objectName);
-                    throw;
-                }
-            }
-        }
     }
 }
