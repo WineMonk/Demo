@@ -1,0 +1,54 @@
+﻿<Window
+    x:Class="TestCommunityToolkit._3_Command.BlogWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TestCommunityToolkit._3_Command"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="BlogWindow"
+    Width="800"
+    Height="450"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:BlogWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <ListBox ItemsSource="{Binding Blogs}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label
+                            Width="100"
+                            HorizontalContentAlignment="Center"
+                            Content="{Binding Name}" />
+                        <Label
+                            Width="200"
+                            HorizontalContentAlignment="Center"
+                            Content="{Binding Url}" />
+                        <TextBlock
+                            Width="300"
+                            Text="{Binding Description}"
+                            TextWrapping="Wrap" />
+                        <Button
+                            Margin="2"
+                            Padding="5,1"
+                            Command="{Binding BlogInfoCommand}"
+                            Content="View" />
+                        <Button
+                            Margin="2"
+                            Padding="5,1"
+                            Command="{Binding OpenBlogCommand}"
+                            Content="Open" />
+                        <Button
+                            Margin="2"
+                            Padding="5,1"
+                            Command="{Binding DataContext.DeleteBlogCommand, RelativeSource={RelativeSource AncestorType=ListBox, Mode=FindAncestor}}"
+                            CommandParameter="{Binding .}"
+                            Content="Delete" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

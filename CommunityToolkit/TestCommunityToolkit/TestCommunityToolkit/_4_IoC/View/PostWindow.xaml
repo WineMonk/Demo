@@ -1,0 +1,71 @@
+﻿<Window
+    x:Class="TestCommunityToolkit._4_IoC.View.PostWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TestCommunityToolkit._4_IoC.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="PostWindow"
+    Width="800"
+    Height="450"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+    <Grid>
+        <ListBox
+            HorizontalContentAlignment="Stretch"
+            d:ItemsSource="{d:SampleData ItemCount=5}"
+            ItemsSource="{Binding Posts}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            HorizontalContentAlignment="Center"
+                            Content="{Binding Title}"
+                            FontSize="18"
+                            FontWeight="Bold" />
+                        <Label Grid.Row="1" Content="{Binding Content}" />
+                        <Label
+                            Grid.Row="2"
+                            Content="Comments: "
+                            FontWeight="Bold" />
+                        <ListBox Grid.Row="3" ItemsSource="{Binding Comments}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="{Binding Author}" />
+                                            <Label>
+                                                <TextBlock
+                                                    Cursor="Hand"
+                                                    Foreground="Blue"
+                                                    Text="{Binding Email}"
+                                                    TextDecorations="Underline" />
+                                            </Label>
+                                        </StackPanel>
+                                        <Label Grid.Row="1" Content="{Binding Text}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Button
+                            Grid.Row="4"
+                            Command="{Binding AddCommentCommand}"
+                            Content="+  Add Comment" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
