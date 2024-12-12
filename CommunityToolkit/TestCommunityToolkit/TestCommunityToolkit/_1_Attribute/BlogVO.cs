@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Text.Json.Serialization;
 using System.Windows;
-using System.Xml.Linq;
 using TestCommunityToolkit._2_Observable;
 using TestCommunityToolkit._4_IoC.View;
 
@@ -9,6 +9,7 @@ namespace TestCommunityToolkit._1_Attribute
 {
     public partial class BlogVO : ObservableObject
     {
+        [property: JsonIgnore]
         [ObservableProperty]
         private string _name;
 
@@ -45,16 +46,30 @@ namespace TestCommunityToolkit._1_Attribute
         private IList<PostVO> _posts;
 
         [RelayCommand]
-        private void BlogInfo()
+        private void OnBlogInfo()
         {
-            MessageBox.Show($"Name: {_name}\nUrl: {_url}\nDescription: {_description}");
+            MessageBox.Show($"Name: {Name}\nUrl: {Url}\nDescription: {Description}");
         }
         // [RelayCommand]
         //
-        //         ↓
+        //       ↓
         //
         // private ICommand blogInfoCommand;
         // public ICommand BlogInfoCommand => blogInfoCommand ??= new RelayCommand(BlogInfo);
+
+        [RelayCommand]
+        private async Task OnAddPostAsync()
+        {
+            await Task.Delay(1000);
+            // Add a new post to the list...
+        }
+        // [RelayCommand]
+        //
+        //       ↓
+        //
+        // private ICommand addPostCommand;
+        // public IAsyncRelayCommand AddPostCommand => addPostCommand ??= new AsyncRelayCommand(new Func<Task>(AddPost));
+
 
         [RelayCommand]
         private void OpenBlog()

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\address-book--pencil.png" />
+    <None Remove="Images\address-book-open.png" />
+    <None Remove="Images\alarm-clock-blue.png" />
+    <None Remove="Images\document.png" />
+    <None Remove="Images\property-blue.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\address-book--pencil.png" />
+    <Resource Include="Images\address-book-open.png" />
+    <Resource Include="Images\alarm-clock-blue.png" />
+    <Resource Include="Images\document.png" />
+    <Resource Include="Images\property-blue.png" />
+  </ItemGroup>
+
+</Project>

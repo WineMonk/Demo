@@ -9,7 +9,7 @@ namespace TestCommunityToolkit._2_Observable
     public partial class CommentVO : ObservableValidator
     {
         [ObservableProperty]
-        [NotifyDataErrorInfo]
+        [NotifyDataErrorInfo ]
         [Required]
         [MinLength(2)]
         [MaxLength(8)]
