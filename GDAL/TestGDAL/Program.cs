@@ -10,7 +10,6 @@ namespace TestGDAL
         static void Main(string[] args)
         {
             
-            }
         }
     }
 }

@@ -1,0 +1,6 @@
+@Hearth.AuthService_HostAddress = http://localhost:5145
+
+GET {{Hearth.AuthService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

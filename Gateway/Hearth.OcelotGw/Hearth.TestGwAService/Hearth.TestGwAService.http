@@ -1,0 +1,6 @@
+@Hearth.TestGwAService_HostAddress = http://localhost:5234
+
+GET {{Hearth.TestGwAService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
